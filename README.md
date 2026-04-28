@@ -1,4 +1,5 @@
-# Vercel XHTTP Relay
+# mafarya x grelay
+# mahani X Relay
 
 ### 🇮🇷 راهنمای کامل فارسی — Complete Persian Setup Guide
 
@@ -9,6 +10,9 @@
 > 👉 **[https://t.me/avaco_cloud](https://t.me/avaco_cloud)**
 
 A minimal relay running on **Vercel Edge Functions** that forwards **XHTTP** traffic from your Xray/V2Ray client to your backend Xray server. The goal: use Vercel's global edge network and the `*.vercel.app` domain as a front to hide the real IP of your origin server.
+
+## چی کارکرد داره؟
+معلومه عقل، عقل زیاد
 
 ---
 
@@ -52,8 +56,11 @@ A minimal relay running on **Vercel Edge Functions** that forwards **XHTTP** tra
 ---
 
 ## نحوه‌ی کار (معماری)
+## mahan
+mahancloude
+mahanisho
 
-```
+
 ┌──────────┐  TLS, SNI=vercel.com   ┌──────────────┐  HTTP/2   ┌──────────────┐
 │  کلاینت   │ ─────────────────────► │ Vercel Edge  │ ────────► │  سرور Xray   │
 │ (v2rayN/  │      XHTTP request     │  (relay)     │  forward  │ XHTTP inbound│
@@ -685,6 +692,11 @@ https://ifconfig.me
 > 💡 برای استفاده‌ی روزمره (چت، مرور، موزیک، ویدیو 720p) Hobby کاملاً کافیه. برای استریم 4K یا دانلود سنگین، یا Pro بگیر یا چند پروژه‌ی Hobby بساز و بین‌شون load balance کن.
 
 ---
+# شخصی
+## توضیح تکمیلی
+باید یکم نبوغ به خرج بدی وگرنه میبازی
+فهمیدی
+فهمیدی یا نه
 
 ## عیب‌یابی
 
@@ -752,6 +764,10 @@ chown -R nobody:nogroup /etc/xray /var/log/xray
 ```bash
 vercel logs --follow
 ```
+## یعنی میشه؟
+بله که میشه
+خوب هم میشه
+
 یا در داشبورد → پروژه → **Logs**.
 
 ### بعد از تغییر کانفیگ Xray باید چی کار کنم؟
