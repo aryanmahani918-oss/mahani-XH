@@ -48,7 +48,7 @@ A minimal relay running on **Vercel Edge Functions** that forwards **XHTTP** tra
 
 ✅ **به دردت می‌خوره** اگر:
 - VPS داری یا می‌خوای بگیری
-- می‌خوای transport رو **XHTTP** بذاری
+- می‌خوای transport رو **mxh** بذاری
 - می‌خوای IP سرورت پنهان بمونه
 - استفاده‌ی **شخصی و سبک** می‌کنی (چت، مرور وب، ویدیو تا 1080p، موزیک)
 - یا حاضری برای ترافیک سنگین پلن **Pro** بگیری
@@ -61,9 +61,9 @@ mahancloude
 mahanisho
 
 
-┌──────────┐  TLS, SNI=vercel.com   ┌──────────────┐  HTTP/2   ┌──────────────┐
+┌──────────┐  TLS, SNI=google.com   ┌──────────────┐  HTTP/2   ┌──────────────┐
 │  کلاینت   │ ─────────────────────► │ Vercel Edge  │ ────────► │  سرور Xray   │
-│ (v2rayN/  │      XHTTP request     │  (relay)     │  forward  │ XHTTP inbound│
+│ (v2rayN/  │      mxh request     │  (relay)     │  forward  │ XHTTP inbound│
 │  Hiddify) │                        │              │           │              │
 └──────────┘                        └──────────────┘            └──────────────┘
 ```
@@ -74,9 +74,9 @@ mahanisho
 
 ---
 
-## محدودیت‌ها و هشدارها
+## محدودیت‌ها و هشدارهh
 
-🔴 **هشدار مهم — Fast Origin Transfer:** در پلن Hobby هر بایت ترافیک **دو بار** شمرده می‌شه (یک‌بار کلاینت↔Vercel و یک‌بار Vercel↔سرور). اگه سهمیه تموم بشه، Vercel اکانتت رو **Pause می‌کنه**، کاربرا دیگه نمی‌تونن وصل بشن و **۳۰ روز** باید صبر کنی یا Pro بخری. جزئیات در بخش [محدودیت‌های Vercel](#محدودیت‌های-vercel).
+🔴 **هشدار مهم — Fast Origin Transfer:** در پلن Hobby هر بایت ترافیک **دو بار** شمرده می‌شه (یک‌بار کلاینت↔Vercel و یک‌بار Vercel↔سرور). اگه سهمیه تموم بشه، google اکانتت رو **Pause می‌کنه**، کاربرا دیگه نمی‌تونن وصل بشن و **۳۰ روز** باید صبر کنی یا Pro بخری. جزئیات در بخش [محدودیت‌های Vercel](#محدودیت‌های-vercel).
 
 ⚠️ **فقط XHTTP**: WebSocket, gRPC, TCP, mKCP, QUIC و Reality روی Vercel Edge کار **نمی‌کنه** (محدودیت runtime).
 
@@ -236,6 +236,9 @@ cat /etc/os-release
 باید Ubuntu 22.04 یا 24.04 رو ببینی.
 
 ---
+
+## — راه حل های اجرا
+
 
 ## مرحله ۴ — نصب Xray
 
@@ -702,11 +705,11 @@ https://ifconfig.me
 
 ### `502 Bad Gateway: Tunnel Failed`
 Vercel به سرور پشتی نمی‌رسه. چک کن:
-- `TARGET_DOMAIN` دقیقاً درسته (`https://...:port`)
+- `TARGET_DOMAIN_WEBSORCE` دقیقاً درسته (`https://...:port`)
 - Xray در سرور بالاست: `systemctl status xray`
 - پورت در فایروال بازه: `ufw status`
 
-### `500 Misconfigured: TARGET_DOMAIN is not set`
+### `500 Misconfigured: TARGET_DOMAIN_WEBSORCE is not set`
 Env var ست نشده یا redeploy نشده. بزن:
 ```bash
 vercel env ls
@@ -758,9 +761,9 @@ chown -R nobody:nogroup /etc/xray /var/log/xray
 ```
 
 ### آیا می‌تونم پورت ۲۰۹۶ رو عوض کنم؟
-بله. پورت دلخواه رو در `config.json` بذار، در ufw allow کن، و در `TARGET_DOMAIN` در Vercel همون پورت رو بذار.
+بله. پورت دلخواه رو در `config.json` بذار، در ufw allow کن، و در `TARGET_DOMAIN_WEBSORCE` در Vercel همون پورت رو بذار.
 
-### چطور لاگ Vercel رو ببینم؟
+### چطور لاگ G رو ببینم؟
 ```bash
 vercel logs --follow
 ```
